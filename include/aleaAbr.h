@@ -1,8 +1,6 @@
 #ifndef ALEA
 #define ALEA
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "structAbr.h"
 #include "importAbr.h"
 #include "hauteurAbr.h"

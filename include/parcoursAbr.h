@@ -1,8 +1,6 @@
 #ifndef PARCOURS
 #define PARCOURS
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "structAbr.h"
 
 void parcoursPrefixe(Noeud* noeud);

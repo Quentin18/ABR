@@ -2,7 +2,6 @@
 #define EXPORT
 
 #include <stdio.h>
-#include <stdlib.h>
 #include "structAbr.h"
 
 void ecritParcoursPrefixe(Noeud* noeud, FILE* fichier, int* step);

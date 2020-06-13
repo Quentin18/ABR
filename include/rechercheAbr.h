@@ -1,8 +1,6 @@
 #ifndef RECHERCHE
 #define RECHERCHE
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "structAbr.h"
 
 int maximumArbre(Noeud* noeud);

@@ -1,8 +1,6 @@
 #ifndef IMPORT
 #define IMPORT
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "structAbr.h"
 #include "rechercheAbr.h"
 #include "hauteurAbr.h"

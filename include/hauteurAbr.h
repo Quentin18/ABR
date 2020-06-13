@@ -1,8 +1,6 @@
 #ifndef HAUTEUR
 #define HAUTEUR
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "structAbr.h"
 #include "aleaAbr.h"
 

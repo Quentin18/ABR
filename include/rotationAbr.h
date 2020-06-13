@@ -1,8 +1,6 @@
 #ifndef ROTATION
 #define ROTATION
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "structAbr.h"
 
 int facteurEquilibre(Noeud* noeud);

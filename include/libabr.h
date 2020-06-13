@@ -1,7 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-
 typedef struct noeud {
     /* Représente un noeud */
     int cle;
