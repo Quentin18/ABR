@@ -39,12 +39,11 @@ Abr* creerArbreAlea(char* nom, int id, int nbSommets, int valMin, int valMax) {
     /* Crée un abr aléatoire */
     int* entiers = entiersAlea(nbSommets, valMin, valMax); // Génération entiers aléatoires
     // afficheEntiersAlea(entiers, nbSommets);
-    Noeud* racine = creerNoeud(entiers[0], NULL, NULL, NULL, 0); // Création racine
-    Abr* arbre = creerAbr(nom, id, racine); // Création arbre
-    for (int i = 1 ; i < nbSommets ; i++) {
-        inserer(arbre->racine, entiers[i]); // Insertion des entiers aléatoires
+    Abr* arbre = creerAbr(nom, id, NULL); // Création arbre
+    for (int i = 0 ; i < nbSommets ; i++) {
+        insererAbr(arbre, entiers[i]); // Insertion des entiers aléatoires
     }
-    MAJHauteurs(racine);
+    MAJHauteurs(arbre->racine);
     free(entiers);
     return arbre;
 }

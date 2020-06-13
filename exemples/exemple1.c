@@ -15,21 +15,18 @@
 
 int main(int argc, char const *argv[]) {
     // Création d'un arbre
-    Noeud* noeud = creerNoeud(2, NULL, NULL, NULL, 0);
-    Abr* arbre = creerAbr("arbre1", 0, noeud);
+    Abr* arbre = creerAbr("arbre1", 0, NULL);
 
     // Insertions
-    inserer(arbre->racine, 1);
-    inserer(arbre->racine, 3);
-    inserer(arbre->racine, 4);
-    inserer(arbre->racine, 0);
-    // Mise à jour des hauteurs
-    MAJHauteurs(arbre->racine);
+    insererAbr(arbre, 2);
+    insererAbr(arbre, 1);
+    insererAbr(arbre, 3);
+    insererAbr(arbre, 4);
+    insererAbr(arbre, 0);
     exportationDot(arbre->racine, "arbre1.dot", 0);
 
     // Suppression
-    supprimer(arbre->racine, 3);
-    MAJHauteurs(arbre->racine);
+    supprimerAbr(arbre, 3);
     exportationDot(arbre->racine, "arbre1Supprime.dot", 0);
 
     libererAbr(arbre);

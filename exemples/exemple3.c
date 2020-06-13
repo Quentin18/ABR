@@ -55,7 +55,7 @@ int main(int argc, char const *argv[]) {
         printf("\n");
 
         printf("Suppression de %d...\n", val);
-        supprimer(arbreAlea->racine, val);
+        arbreAlea->racine = supprimer(arbreAlea->racine, val);
         MAJHauteurs(arbreAlea->racine);
         exportationDot(arbreAlea->racine, "arbre3Supprime.dot", 0);
     }

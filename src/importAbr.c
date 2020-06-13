@@ -13,6 +13,7 @@
 #include "structAbr.h"
 #include "rechercheAbr.h"
 #include "hauteurAbr.h"
+#include "rechercheAbr.h"
 
 
 Noeud* creerNoeud(int cle, Noeud* filsG, Noeud* filsD, Noeud* pere, int hauteur) {
@@ -60,27 +61,25 @@ void libererAbr(Abr* arbre) {
     free(arbre);
 }
 
-void inserer(Noeud* noeud, int val) {
+Noeud* inserer(Noeud* noeud, int val) {
     if (noeud == NULL) {
-        printf("Noeud vide !\n");
+        return creerNoeud(val, NULL, NULL, NULL, 0);
     }
-    else {
-        if (val < noeud->cle) {
-            if (noeud->filsG == NULL) {
-                noeud->filsG = creerNoeud(val, NULL, NULL, noeud, 0);
-            }
-            else {
-                inserer(noeud->filsG, val);
-            }
-        }
-        if (val > noeud->cle) {
-            if (noeud->filsD == NULL) {
-                noeud->filsD = creerNoeud(val, NULL, NULL, noeud, 0);
-            }
-            else {
-                inserer(noeud->filsD, val);
-            }
-        }
+    if (val < noeud->cle) {
+        noeud->filsG = inserer(noeud->filsG, val);
+        noeud->filsG->pere = noeud;
+    }
+    else if (val > noeud->cle) {
+        noeud->filsD = inserer(noeud->filsD, val);
+        noeud->filsD->pere = noeud;
+    }
+    return noeud;
+}
+
+void insererAbr(Abr* arbre, int val) {
+    if (!appartient(arbre->racine, val)) {
+        arbre->racine = inserer(arbre->racine, val);
+        MAJHauteurs(arbre->racine);
     }
 }
 
@@ -113,6 +112,11 @@ Noeud* supprimer(Noeud* noeud, int val) {
     return noeud;
 }
 
+void supprimerAbr(Abr* arbre, int val) {
+    arbre->racine = supprimer(arbre->racine, val);
+    MAJHauteurs(arbre->racine);
+}
+
 Abr* importationAbr(char* nomFichier) {
     /* Importe un arbre binaire de recherche stocké dans un fichier .txt
     Structure du fichier .txt :
@@ -129,7 +133,7 @@ Abr* importationAbr(char* nomFichier) {
         if (arbre != NULL) {
             for (int i = 1 ; i < nbSommets ; i++) {
                 fscanf(fichier, "%d", &cle);
-                inserer(arbre->racine, cle);
+                arbre->racine = inserer(arbre->racine, cle);
             }
             fclose(fichier);
             printf("Importation de l'arbre du fichier %s réussie !\n", nomFichier);
